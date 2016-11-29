@@ -1,6 +1,8 @@
 package com.example.owner.lacochina;
 
 import android.Manifest;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -8,6 +10,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.owner.lacochina.R;
@@ -18,12 +23,21 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.io.Console;
+import java.util.ArrayList;
 
 public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -35,6 +49,17 @@ public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    ArrayList<Restaurant> arrayRestaurant;
+    ArrayList<Restaurant> markerRestaurant;
+    FirebaseDatabase db;
+    DatabaseReference ref;
+
+    public ArrayList<Restaurant> getRestaurantes(ArrayList<Restaurant> restaurantes){
+
+        Log.d("TOY JUERA CABRON ",Integer.toString(restaurantes.size()));
+        Log.d("TOY JUERA CABRON ",restaurantes.get(0).getRestaurantName());
+        return restaurantes;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +69,9 @@ public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+
     }
 
 
@@ -60,6 +88,50 @@ public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        //Log.d("TOY JUERA CABRON ",markerRestaurant.get(0).getRestaurantName());
+
+        db= FirebaseDatabase.getInstance();
+        ref=db.getReference("Restaurants");
+
+        ValueEventListener listener = new ValueEventListener() {
+
+            ArrayList<Restaurant> arrayRestaurant;
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                arrayRestaurant = new ArrayList<Restaurant>();
+                Restaurant restaurant= new Restaurant();
+                for(DataSnapshot userSnap: dataSnapshot.getChildren()){
+
+
+                    restaurant = userSnap.getValue(Restaurant.class);
+                    arrayRestaurant.add(restaurant);
+                }
+                Log.d("ENTRE A METODO", Integer.toString(arrayRestaurant.size()));
+                //markerRestaurant= getRestaurantes(arrayRestaurant);
+
+                for(int i = 0;i<arrayRestaurant.size();i++){
+                    Log.d("RESTAURANTES ",arrayRestaurant.get(i).getRestaurantName()+" LATITUDE: "
+                            +arrayRestaurant.get(i).getLatitude()+" LONGITUDE: "+arrayRestaurant.get(i).getLongitude());
+
+                    Double latitude = Double.valueOf(arrayRestaurant.get(i).latitude);
+                    Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
+
+                    LatLng newRestaurant = new LatLng(latitude,longitude);
+                    mMap.addMarker(new MarkerOptions().position(newRestaurant).title(arrayRestaurant.get(i).getRestaurantName()));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        ref.addValueEventListener(listener);
+        //Log.d("TOY JUERA CABRON ",Integer.toString(markerRestaurant.size()));
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
