@@ -120,7 +120,12 @@ public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
                     Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
 
                     LatLng newRestaurant = new LatLng(latitude,longitude);
-                    mMap.addMarker(new MarkerOptions().position(newRestaurant).title(arrayRestaurant.get(i).getRestaurantName()));
+                    mMap.addMarker(new MarkerOptions()
+                            .position(newRestaurant)
+                            .title(arrayRestaurant.get(i).getRestaurantName())
+                            .snippet(arrayRestaurant.get(i).getRestaurantType())
+                            //.snippet(arrayRestaurant.get(i).getRestaurantTelephone())
+                            );
                 }
 
             }
@@ -193,9 +198,10 @@ public class MiMapa extends FragmentActivity implements OnMapReadyCallback,
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
+
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
 
         //stop location updates
         if (mGoogleApiClient != null) {
