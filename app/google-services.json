@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "611638039506",
+    "firebase_url": "https://lacochina-4c294.firebaseio.com",
+    "project_id": "lacochina-4c294",
+    "storage_bucket": "lacochina-4c294.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611638039506:android:84b4a3bcf0c87414",
+        "android_client_info": {
+          "package_name": "com.example.owner.lacochina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611638039506-irkegnsj725sb4femnrhi5ugnkna48ka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK-9JPQmM3dMyXK34MjBN0toSN4TGxsKE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
