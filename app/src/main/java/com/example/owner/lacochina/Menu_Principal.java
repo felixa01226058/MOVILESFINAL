@@ -1,5 +1,7 @@
 package com.example.owner.lacochina;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -95,6 +97,15 @@ public class Menu_Principal extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            /*
+            Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            }*/
+            Intent intent = new Intent(this,MiMapa.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 

@@ -73,5 +73,15 @@
         android:layout_below="@+id/passwordLogin"
         android:layout_alignStart="@+id/passwordLogin" />
 
+    <Button
+        android:text="a mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_facebbok"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/button9"
+        android:onClick="changeActivity" />
+
 
 </RelativeLayout>

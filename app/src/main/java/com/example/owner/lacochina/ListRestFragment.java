@@ -97,7 +97,7 @@ public class ListRestFragment extends Fragment {
                 });
 
 
-                MyAdapter adapter =new MyAdapter(arrayRestaurant,getActivity());
+                MyAdapter adapter = new MyAdapter(arrayRestaurant,getActivity());
                 list.setAdapter(adapter);
             }
 
