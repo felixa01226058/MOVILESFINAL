@@ -20,7 +20,7 @@
         android:layout_alignStart="@+id/emailLogin"
         android:layout_marginTop="12dp"
         android:id="@+id/passwordLogin"
-        android:text="***************" />
+        android:text="mayto.1" />
 
     <Button
         android:text="Sign In"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="  connect_with_facebook"
+        android:text="connect_with_facebook"
         android:layout_below="@+id/LoginButton"
         android:layout_alignEnd="@+id/button2"
         android:layout_marginEnd="12dp"

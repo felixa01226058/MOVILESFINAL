@@ -10,8 +10,7 @@ public class Restaurant {
                     restaurantAddress,
                     restaurantType,
                     restaurantTelephone,
-                    restaurantReputation,
-                    delivery;
+                    restaurantReputation;
 
     public double latitude,longitude;
 
@@ -22,13 +21,11 @@ public class Restaurant {
         this.restaurantType = restaurantType;
         this.restaurantTelephone = restaurantTelephone;
         this.restaurantReputation = restaurantReputation;
-        this.delivery = delivery;
         this.latitude= latitude;
         this.longitude = longitude;
     }
 
     public Restaurant(){
-
 
     }
 
@@ -50,10 +47,6 @@ public class Restaurant {
 
     public String getRestaurantType() {
         return restaurantType;
-    }
-
-    public String getDelivery() {
-        return delivery;
     }
 
     public Double getLatitude(){return latitude;}
@@ -78,10 +71,6 @@ public class Restaurant {
 
     public void setRestaurantType(String restaurantType) {
         this.restaurantType = restaurantType;
-    }
-
-    public void setDelivery(String delivery) {
-        this.delivery = delivery;
     }
 
     public void setLatitude(Double latitude) {this.latitude=latitude;}
