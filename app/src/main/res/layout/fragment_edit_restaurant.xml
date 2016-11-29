@@ -31,16 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Delivery"
-        android:ems="10"
-        android:id="@+id/resDeliveryEdit"
-        android:layout_below="@+id/resRepEdit"
-        android:layout_alignStart="@+id/resRepEdit" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:text="Type"
         android:ems="10"
         android:id="@+id/resTypeEdit"
@@ -112,32 +102,60 @@
         android:id="@+id/textView19"
         android:layout_alignStart="@+id/textView18" />
 
-    <TextView
-        android:text="Entrega dom"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/resRepEdit"
-        android:layout_alignStart="@+id/textView19"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView20" />
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_below="@+id/longitude"
+        android:layout_alignStart="@+id/longitude"
+        android:id="@+id/latitude" />
 
-    <Button
-        android:text="Regresar"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
-        android:layout_marginStart="48dp"
-        android:layout_alignBaseline="@+id/button4"
-        android:layout_alignBottom="@+id/button4"
-        android:layout_alignStart="@+id/resDeliveryEdit" />
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/longitude"
+        android:layout_below="@+id/resRepEdit"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:layout_alignTop="@+id/longitude"
+        android:layout_alignEnd="@+id/textView17"
+        android:text="Longitude" />
+
+    <TextView
+        android:text="Latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView24"
+        android:layout_alignBaseline="@+id/latitude"
+        android:layout_alignBottom="@+id/latitude"
+        android:layout_alignEnd="@+id/textView19" />
 
     <Button
         android:text="Editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
-        android:layout_marginTop="41dp"
+        android:layout_below="@+id/latitude"
+        android:layout_toStartOf="@+id/latitude"
+        android:layout_marginTop="79dp" />
+
+    <Button
+        android:text="Regresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5"
         android:layout_marginStart="20dp"
-        android:layout_below="@+id/resDeliveryEdit"
-        android:layout_alignStart="@+id/textView20" />
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
 </RelativeLayout>

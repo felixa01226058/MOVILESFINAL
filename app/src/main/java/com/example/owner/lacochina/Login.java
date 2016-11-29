@@ -166,4 +166,9 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    public void changeActivity(){
+        Intent intent = new Intent(this,MiMapa.class);
+        startActivity(intent);
+    }
+
 }

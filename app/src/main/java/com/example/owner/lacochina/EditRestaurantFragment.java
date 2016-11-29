@@ -33,7 +33,8 @@ public class EditRestaurantFragment extends Fragment {
                     typeEdit,
                     telephoneEdit,
                     reputationEdit,
-                    deliveryEdit;
+                    longitude,
+                    latitude;
 
     private Restaurant restaurant;
 
@@ -85,14 +86,17 @@ public class EditRestaurantFragment extends Fragment {
         typeEdit=(EditText)v.findViewById(R.id.resTypeEdit);
         telephoneEdit=(EditText)v.findViewById(R.id.resTelephoneEdit);
         reputationEdit=(EditText)v.findViewById(R.id.resRepEdit);
-        deliveryEdit=(EditText)v.findViewById(R.id.resDeliveryEdit);
+        latitude = (EditText) v.findViewById(R.id.latitude);
+        longitude = (EditText)v.findViewById(R.id.longitude) ;
 
         nameEdit.setText(restaurant.getRestaurantName());
         addressEdit.setText(restaurant.getRestaurantAddress());
         typeEdit.setText(restaurant.getRestaurantType());
         telephoneEdit.setText(restaurant.getRestaurantTelephone());
         reputationEdit.setText(restaurant.getRestaurantReputation());
-        deliveryEdit.setText(restaurant.getDelivery());
+        latitude.setText(String.valueOf(restaurant.getLatitude()));
+        longitude.setText(String.valueOf(restaurant.getLongitude()));
+
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Restaurants");
@@ -104,7 +108,7 @@ public class EditRestaurantFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Restaurant res = new Restaurant(nameEdit.getText().toString(),addressEdit.getText().toString(),typeEdit.getText().toString(),telephoneEdit.getText().toString(),
-                        reputationEdit.getText().toString(),deliveryEdit.getText().toString());
+                        reputationEdit.getText().toString(),Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
                 ref.child(restaurant.getRestaurantName()).setValue(res);
                 Toast.makeText(getActivity(),"Restaurant Editado",Toast.LENGTH_LONG).show();
 

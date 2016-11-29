@@ -31,7 +31,9 @@ public class AddRestaurantFragment extends Fragment {
                         restType,
                         resTelephone,
                         resReputation,
-                        resDelivery;
+                        resDelivery,
+                        longitude,
+                        latitude;
 
     private Button addButton,regresarButton;
 
@@ -71,7 +73,8 @@ public class AddRestaurantFragment extends Fragment {
         restType=(EditText)v.findViewById(R.id.resTypeEditText);
         resTelephone=(EditText)v.findViewById(R.id.resTelephoneEditText);
         resReputation=(EditText)v.findViewById(R.id.resReputationEditText);
-        resDelivery=(EditText) v.findViewById(R.id.resDeliveryEditText);
+        latitude = (EditText) v.findViewById(R.id.latitude);
+        longitude = (EditText)v.findViewById(R.id.longitude) ;
 
         db= FirebaseDatabase.getInstance();
         ref=db.getReference("Restaurants");
@@ -87,7 +90,8 @@ public class AddRestaurantFragment extends Fragment {
 
                 Restaurant restaurant= new Restaurant(restName.getText().toString(),restAddress.getText().toString()
                         ,restType.getText().toString(),resTelephone.getText().toString()
-                        ,resReputation.getText().toString(),resDelivery.getText().toString());
+                        ,resReputation.getText().toString(),
+                        Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
                 ref.child(restName.getText().toString()).setValue(restaurant);
             }
         });
