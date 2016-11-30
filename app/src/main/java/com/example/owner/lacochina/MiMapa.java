@@ -45,6 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Console;
 import java.util.ArrayList;
+import java.lang.*;
 
 public class MiMapa extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -71,6 +72,10 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
         Log.d("TOY JUERA CABRON ",Integer.toString(restaurantes.size()));
         Log.d("TOY JUERA CABRON ",restaurantes.get(0).getRestaurantName());
         return restaurantes;
+    }
+    public double getDistance(double markerLat,double markerLon,double myLat,double myLon){
+        double distancia = Math.sqrt(Math.pow((markerLat-myLat),2)+Math.pow(markerLon-myLon,2));
+        return distancia;
     }
 
     @Override
@@ -142,6 +147,15 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
 
                     Double latitude = Double.valueOf(arrayRestaurant.get(i).latitude);
                     Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
+
+
+
+                    //Log.d("esta es la distancia",String.valueOf(getDistance(latitude,longitude,mLastLocation.getLatitude(),mLastLocation.getLongitude())));
+                    /*float [] result=new float[1];
+                    Location.distanceBetween(mLastLocation.getLatitude(),mLastLocation.getLongitude(),latitude,longitude,result);
+                    Log.d("Hola",Float.toString(result[0]));
+*/
+
 
                     LatLng newRestaurant = new LatLng(latitude,longitude);
                     mMap.addMarker(new MarkerOptions().position(newRestaurant).title(

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class AddRestaurantActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -49,6 +50,8 @@ public class AddRestaurantActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
+
+
 
         restName= (EditText) findViewById(R.id.resNameEditText);
         restAddress=(EditText)findViewById(R.id.resAddressEditText);

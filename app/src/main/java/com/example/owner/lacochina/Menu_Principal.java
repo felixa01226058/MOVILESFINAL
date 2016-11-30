@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.facebook.FacebookSdk;
 
 public class Menu_Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +27,8 @@ public class Menu_Principal extends AppCompatActivity
         setContentView(R.layout.activity_menu__principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +109,12 @@ public class Menu_Principal extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
+
+            MapaFragment mfragment =  MapaFragment.newInstance("","");
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content_menu__principal,mfragment,"MapaFragment");
+            ft.commit();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
