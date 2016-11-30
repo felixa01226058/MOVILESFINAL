@@ -31,16 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Type"
-        android:ems="10"
-        android:id="@+id/resTypeEdit"
-        android:layout_below="@+id/resAddrEdit"
-        android:layout_alignStart="@+id/resAddrEdit" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
         android:id="@+id/resNameEdit"
@@ -57,51 +47,6 @@
         android:layout_below="@+id/resNameEdit"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:text="Nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:id="@+id/textView15"
-        android:layout_alignBaseline="@+id/resNameEdit"
-        android:layout_alignBottom="@+id/resNameEdit"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Direccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resNameEdit"
-        android:layout_alignStart="@+id/textView15"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView16" />
-
-    <TextView
-        android:text="Categoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resAddrEdit"
-        android:layout_alignStart="@+id/textView16"
-        android:layout_marginTop="8dp"
-        android:id="@+id/textView17" />
-
-    <TextView
-        android:text="Telefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resTypeEdit"
-        android:layout_alignStart="@+id/textView17"
-        android:id="@+id/textView18" />
-
-    <TextView
-        android:text="Reputacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resTelephoneEdit"
-        android:layout_marginTop="9dp"
-        android:id="@+id/textView19"
-        android:layout_alignStart="@+id/textView18" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,34 +56,6 @@
         android:layout_below="@+id/longitude"
         android:layout_alignStart="@+id/longitude"
         android:id="@+id/latitude" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/longitude"
-        android:layout_below="@+id/resRepEdit"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView23"
-        android:layout_alignTop="@+id/longitude"
-        android:layout_alignEnd="@+id/textView17"
-        android:text="Longitude" />
-
-    <TextView
-        android:text="Latitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView24"
-        android:layout_alignBaseline="@+id/latitude"
-        android:layout_alignBottom="@+id/latitude"
-        android:layout_alignEnd="@+id/textView19" />
 
     <Button
         android:text="Editar"
@@ -158,4 +75,98 @@
         android:layout_alignBaseline="@+id/button4"
         android:layout_alignBottom="@+id/button4"
         android:layout_toEndOf="@+id/button4" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/longitude"
+        android:layout_below="@+id/resRepEdit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView24"
+        android:layout_alignBaseline="@+id/latitude"
+        android:layout_alignBottom="@+id/latitude"
+        android:layout_alignLeft="@+id/textView19"
+        android:layout_alignStart="@+id/textView19" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:text="Longitude"
+        android:layout_alignBaseline="@+id/longitude"
+        android:layout_alignBottom="@+id/longitude"
+        android:layout_alignRight="@+id/textView15"
+        android:layout_alignEnd="@+id/textView15" />
+
+    <TextView
+        android:text="Reputacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView19"
+        android:layout_alignBaseline="@+id/resRepEdit"
+        android:layout_alignBottom="@+id/resRepEdit"
+        android:layout_alignLeft="@+id/textView23"
+        android:layout_alignStart="@+id/textView23" />
+
+    <TextView
+        android:text="Telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView18"
+        android:layout_alignBaseline="@+id/resTelephoneEdit"
+        android:layout_alignBottom="@+id/resTelephoneEdit"
+        android:layout_alignLeft="@+id/textView19"
+        android:layout_alignStart="@+id/textView19" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Type"
+        android:ems="10"
+        android:id="@+id/resTypeEdit"
+        android:layout_above="@+id/textView18"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:layout_alignBaseline="@+id/resTypeEdit"
+        android:layout_alignBottom="@+id/resTypeEdit"
+        android:layout_alignLeft="@+id/textView18"
+        android:layout_alignStart="@+id/textView18" />
+
+    <TextView
+        android:text="Direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        android:layout_alignBaseline="@+id/resAddrEdit"
+        android:layout_alignBottom="@+id/resAddrEdit"
+        android:layout_alignLeft="@+id/textView17"
+        android:layout_alignStart="@+id/textView17" />
+
+    <TextView
+        android:text="Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:id="@+id/textView15"
+        android:layout_alignBaseline="@+id/resNameEdit"
+        android:layout_alignBottom="@+id/resNameEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="42dp" />
 </RelativeLayout>

@@ -16,35 +16,6 @@
         android:id="@+id/resReputationEditText" />
 
     <TextView
-        android:text="Add Restaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:id="@+id/textView3"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/longitude"
-        android:layout_alignBaseline="@+id/textView21"
-        android:layout_alignBottom="@+id/textView21"
-        android:layout_alignStart="@+id/resAddressEditText" />
-
-    <Button
-        android:text="Add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addButtonNew"
-        android:layout_alignBaseline="@+id/button6"
-        android:layout_alignBottom="@+id/button6"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
         android:text="Telephone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,26 +32,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_below="@+id/resTelephoneEditText"
         android:layout_toStartOf="@+id/textView3" />
-
-    <TextView
-        android:text="Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:id="@+id/textView8"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/textView21" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/resNameEditText"
-        android:layout_alignBaseline="@+id/textView8"
-        android:layout_alignBottom="@+id/textView8"
-        android:layout_alignEnd="@+id/button6" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -100,44 +51,6 @@
         android:layout_below="@+id/resAddressEditText"
         android:layout_alignStart="@+id/resAddressEditText" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/resTelephoneEditText"
-        android:layout_below="@+id/resTypeEditText"
-        android:layout_alignStart="@+id/addButtonNew" />
-
-    <TextView
-        android:text="Lattitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView22"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/longitude"
-        android:layout_alignStart="@+id/textView21" />
-
-    <TextView
-        android:text="Longitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView21"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/resReputationEditText"
-        android:layout_alignEnd="@+id/textView12" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/latitude"
-        android:layout_alignTop="@+id/textView22"
-        android:layout_alignStart="@+id/longitude" />
-
     <TextView
         android:text="Address"
         android:layout_width="wrap_content"
@@ -147,6 +60,27 @@
         android:layout_below="@+id/resNameEditText"
         android:layout_alignStart="@+id/textView8" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/resNameEditText"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignLeft="@+id/button6"
+        android:layout_alignStart="@+id/button6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/resTelephoneEditText"
+        android:layout_below="@+id/resTypeEditText"
+        android:layout_alignLeft="@+id/resTypeEditText"
+        android:layout_alignStart="@+id/resTypeEditText" />
+
     <TextView
         android:text="Type"
         android:layout_width="wrap_content"
@@ -154,15 +88,91 @@
         android:id="@+id/textView10"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_below="@+id/resAddressEditText"
-        android:layout_alignStart="@+id/textView9" />
+        android:layout_alignRight="@+id/textView8"
+        android:layout_alignEnd="@+id/textView8" />
+
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView21"
+        android:layout_alignStart="@+id/textView21" />
+
+    <TextView
+        android:text="Longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView21"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/resReputationEditText"
+        android:layout_alignRight="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/latitude"
+        android:layout_alignBaseline="@+id/textView22"
+        android:layout_alignBottom="@+id/textView22"
+        android:layout_alignLeft="@+id/longitude"
+        android:layout_alignStart="@+id/longitude" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/longitude"
+        android:layout_alignBaseline="@+id/textView21"
+        android:layout_alignBottom="@+id/textView21"
+        android:layout_alignLeft="@+id/resReputationEditText"
+        android:layout_alignStart="@+id/resReputationEditText" />
+
+    <TextView
+        android:text="Lattitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView22"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/longitude"
+        android:layout_alignLeft="@+id/textView21"
+        android:layout_alignStart="@+id/textView21" />
 
     <Button
         android:text="regresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button6"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_alignBaseline="@+id/addButtonNew"
+        android:layout_alignBottom="@+id/addButtonNew"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Add Restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addButtonNew"
+        android:layout_below="@+id/latitude"
+        android:layout_alignLeft="@+id/textView22"
+        android:layout_alignStart="@+id/textView22"
+        android:layout_marginTop="48dp" />
 
 </RelativeLayout>

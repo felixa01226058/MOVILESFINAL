@@ -68,21 +68,27 @@
         android:layout_alignStart="@+id/repTextField" />
 
     <Button
-        android:text="Editar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/delTextField"
-        android:layout_toEndOf="@+id/typeTextField"
-        android:layout_marginTop="20dp"
-        android:id="@+id/button7" />
-
-    <Button
         android:text="Cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button7"
+        android:layout_marginStart="48dp"
+        android:id="@+id/button8"
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_toRightOf="@+id/button7"
         android:layout_toEndOf="@+id/button7"
-        android:layout_marginStart="36dp"
-        android:id="@+id/button8" />
+        android:layout_marginLeft="48dp" />
+
+    <Button
+        android:text="Editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/button7"
+        android:layout_below="@+id/delTextField"
+        android:layout_alignLeft="@+id/delTextField"
+        android:layout_alignStart="@+id/delTextField"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp" />
 
 </RelativeLayout>
