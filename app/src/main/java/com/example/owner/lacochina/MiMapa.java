@@ -133,10 +133,19 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                     Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
 
                     LatLng newRestaurant = new LatLng(latitude,longitude);
+<<<<<<< HEAD
                     mMap.addMarker(new MarkerOptions().position(newRestaurant).title(
                             arrayRestaurant.get(i).getRestaurantName()+
                                     "\nPhone: "+arrayRestaurant.get(i).getRestaurantTelephone()
                                     +"\nRating: "+arrayRestaurant.get(i).getRestaurantReputation() ));
+=======
+                    mMap.addMarker(new MarkerOptions()
+                            .position(newRestaurant)
+                            .title(arrayRestaurant.get(i).getRestaurantName())
+                            .snippet(arrayRestaurant.get(i).getRestaurantType())
+                            //.snippet(arrayRestaurant.get(i).getRestaurantTelephone())
+                            );
+>>>>>>> origin/master
                 }
 
             }
@@ -306,9 +315,16 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
+
         //move map camera
+<<<<<<< HEAD
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                 new LatLng(location.getLatitude(), location.getLongitude()), 14), 500, null);
+=======
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+
+>>>>>>> origin/master
         //stop location updates
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
