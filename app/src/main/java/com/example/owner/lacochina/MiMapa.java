@@ -133,7 +133,10 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                     Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
 
                     LatLng newRestaurant = new LatLng(latitude,longitude);
-                    mMap.addMarker(new MarkerOptions().position(newRestaurant).title(arrayRestaurant.get(i).getRestaurantName()));
+                    mMap.addMarker(new MarkerOptions().position(newRestaurant).title(
+                            arrayRestaurant.get(i).getRestaurantName()+
+                                    "\nPhone: "+arrayRestaurant.get(i).getRestaurantTelephone()
+                                    +"\nRating: "+arrayRestaurant.get(i).getRestaurantReputation() ));
                 }
 
             }
@@ -201,7 +204,6 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-
         mGoogleApiClient.connect();
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -211,7 +213,6 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
     @Override
     public void onConnected(Bundle bundle) {
 
-        Toast.makeText(this, "Loc Listener Connected", Toast.LENGTH_LONG).show();
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
         mLocationRequest.setFastestInterval(1000);
@@ -283,7 +284,6 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
     @Override
     public void onLocationChanged(Location location) {
 
-        Toast.makeText(this, "Loc changed", Toast.LENGTH_LONG).show();
         if ( Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -307,7 +307,6 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
-        Toast.makeText(this, "FOUND YOU!", Toast.LENGTH_LONG);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                 new LatLng(location.getLatitude(), location.getLongitude()), 14), 500, null);
         //stop location updates
