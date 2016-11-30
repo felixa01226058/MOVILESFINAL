@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -16,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.owner.lacochina.R;
@@ -100,6 +102,15 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
+            @Override
+            public void onMapClick(LatLng point) {
+                // TODO Auto-generated method stub
+                mCurrLocationMarker.setPosition(point);
+            }
+        });
         //mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Log.d("TOY JUERA CABRON ",markerRestaurant.get(0).getRestaurantName());
@@ -133,6 +144,7 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                     Double longitude = Double.valueOf(arrayRestaurant.get(i).longitude);
 
                     LatLng newRestaurant = new LatLng(latitude,longitude);
+<<<<<<< HEAD
 
                     mMap.addMarker(new MarkerOptions().position(newRestaurant).title(
                             arrayRestaurant.get(i).getRestaurantName()+
@@ -146,6 +158,13 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                             //.snippet(arrayRestaurant.get(i).getRestaurantTelephone())
                             );
 
+=======
+                    mMap.addMarker(new MarkerOptions().position(newRestaurant).title(
+                            arrayRestaurant.get(i).getRestaurantName()).snippet(
+                                    arrayRestaurant.get(i).getRestaurantType()+
+                                            ", Rating: "+arrayRestaurant.get(i).getRestaurantReputation()
+                    ));
+>>>>>>> 4a2e4877bebab095f691e26e2764fd312fb9b475
                 }
 
             }
@@ -231,7 +250,12 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                 == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 canAccessLocation()) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+            try{
+                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         else{
             Toast.makeText(this, "No location permission", Toast.LENGTH_LONG).show();
@@ -282,12 +306,19 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
             double latitude = mLastLocation.getLatitude();
             double longitude = mLastLocation.getLongitude();
 
-            Toast.makeText(this, latitude + ", " + longitude, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, latitude + ", " + longitude, Toast.LENGTH_LONG).show();
 
         } else {
 
-            Toast.makeText(this, "(Couldn't get the location. Make sure location is enabled on the device)", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "(Couldn't get the location. Make sure location is enabled on the device)", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void newPlace(View v){
+        Intent intent = new Intent(this,AddRestaurantActivity.class);
+        intent.putExtra("lat", mCurrLocationMarker.getPosition().latitude);
+        intent.putExtra("lon", mCurrLocationMarker.getPosition().longitude);
+        startActivity(intent);
     }
 
     @Override
@@ -315,8 +346,8 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
-
         //move map camera
+<<<<<<< HEAD
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                 new LatLng(location.getLatitude(), location.getLongitude()), 14), 500, null);
@@ -325,6 +356,11 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
 
 
+=======
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(location.getLatitude(), location.getLongitude()), 14), 500, null);
+
+>>>>>>> 4a2e4877bebab095f691e26e2764fd312fb9b475
         //stop location updates
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
@@ -435,6 +471,39 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
     @TargetApi(Build.VERSION_CODES.M)
     private boolean hasPermission(String perm) {
         return(PackageManager.PERMISSION_GRANTED==checkSelfPermission(perm));
+    }
+
+    class MyInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
+
+        private final View myContentsView;
+        private String name, vicinity;
+
+        public MyInfoWindowAdapter(String name, String vicinity) {
+            myContentsView = getLayoutInflater().inflate(
+                    R.layout.custom_info_contents, null);
+            this.name = name;
+            this.vicinity = vicinity;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+
+            TextView tvTitle = ((TextView) myContentsView
+                    .findViewById(R.id.title));
+            tvTitle.setText(name);
+            TextView tvSnippet = ((TextView) myContentsView
+                    .findViewById(R.id.snippet));
+            tvSnippet.setText(vicinity);
+
+            return myContentsView;
+        }
+
+        @Override
+        public View getInfoWindow(Marker marker) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
     }
 }
 
