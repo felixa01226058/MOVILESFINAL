@@ -1,4 +1,4 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

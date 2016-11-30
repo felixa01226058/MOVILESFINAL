@@ -1,4 +1,4 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 import android.app.Activity;
 import android.view.View;

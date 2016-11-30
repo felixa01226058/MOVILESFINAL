@@ -1,11 +1,10 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.NonNull;
@@ -23,18 +22,16 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import com.google.android.gms.games.event.Event;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -215,11 +212,14 @@ public class EditRestaurantFragment extends Fragment implements OnMapReadyCallba
                     LOCATION_REQUEST);
         }
 
+        LatLng sydney = new LatLng(restaurant.latitude, restaurant.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
             public void onMapClick(LatLng newLatLon) {
-                mMap.addMarker(new MarkerOptions().position(newLatLon).title("Fiesta"));
+                mMap.addMarker(new MarkerOptions().position(newLatLon).title("Ubicacion"));
                 lat = newLatLon.latitude;
                 log = newLatLon.longitude;
             }

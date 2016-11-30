@@ -7,6 +7,11 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ubicacion_mapas"
             android:title="Mapa" />
+
+        <item
+            android:id="@+id/nav_mapFiltered"
+            android:icon="@drawable/ubicacion_mapas"
+            android:title="Mapa Parcial" />
     </group>
 
     <item android:title="Communicate">

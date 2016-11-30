@@ -1,4 +1,4 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 /**
  * Created by Owner on 21/10/2016.

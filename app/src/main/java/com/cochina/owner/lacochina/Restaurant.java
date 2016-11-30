@@ -1,4 +1,4 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 /**
  * Created by Asus gl552 on 23/10/2016.

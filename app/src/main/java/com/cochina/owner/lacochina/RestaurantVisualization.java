@@ -1,7 +1,6 @@
-package com.example.owner.lacochina;
+package com.cochina.owner.lacochina;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -12,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.share.model.ShareLinkContent;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 
 public class RestaurantVisualization extends Fragment {
@@ -36,7 +35,7 @@ public class RestaurantVisualization extends Fragment {
                     reputation,
                     delivery;
 
-    private Button editButton,editButton2;
+    private Button editButton,editButton2,compartir;
 
     private Restaurant restaurant;
 
@@ -96,6 +95,7 @@ public class RestaurantVisualization extends Fragment {
 
         editButton = (Button) v.findViewById(R.id.button7);
         editButton2 = (Button) v.findViewById(R.id.button8);
+        compartir = (Button) v.findViewById(R.id.compartirFB);
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +119,17 @@ public class RestaurantVisualization extends Fragment {
                 t.commit();
             }
         });
+        compartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"compartido en facebook",Toast.LENGTH_LONG).show();
+                ShareLinkContent content = new ShareLinkContent.Builder()
+                        //.setContentUrl(Uri.parse("https://www.google.com.mx/maps/@"+restaurant.getLatitude()+",-"+restaurant.getLongitude()+",14z?hl=es-419"))
+                        .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                        .build();
+            }
+        });
+
 
 
         return v;
@@ -138,6 +149,12 @@ public class RestaurantVisualization extends Fragment {
     public void onDetach() {
         super.onDetach();
 
+    }
+
+    public void shareFB(View v){
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("https://www.google.com.mx/maps/@"+restaurant.getLatitude()+",-"+restaurant.getLongitude()+",14z?hl=es-419"))
+                .build();
     }
 
 

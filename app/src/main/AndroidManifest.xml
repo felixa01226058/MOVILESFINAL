@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.owner.lacochina">
+    package="com.cochina.owner.lacochina">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -16,7 +12,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +24,9 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
+        <provider android:authorities="com.facebook.app.FacebookContentProvider196018684172470"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
 
         <activity android:name=".Login">
             <intent-filter>
@@ -59,11 +58,13 @@
 
         <activity
             android:name=".MiMapa"
-            android:label="@string/title_activity_mi_mapa"></activity>
-
+            android:label="@string/title_activity_mi_mapa" />
         <activity
             android:name=".AddRestaurantActivity"
-            android:label="Nuevo Restaurante"></activity>
+            android:label="Nuevo Restaurante" />
+        <activity
+            android:name=".MapsFiltered"
+            android:label="@string/title_activity_maps_filtered"></activity>
     </application>
 
 </manifest>
