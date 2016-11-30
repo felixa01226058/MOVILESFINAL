@@ -3,7 +3,7 @@ package com.example.owner.lacochina;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,6 +38,10 @@ public class AddRestaurantFragment extends Fragment {
 
     private Button addButton,regresarButton;
 
+    Intent intent;
+    double placeLat;
+    double placeLon;
+
     private FirebaseDatabase db;
     private DatabaseReference ref;
 
@@ -62,6 +66,8 @@ public class AddRestaurantFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -81,8 +87,19 @@ public class AddRestaurantFragment extends Fragment {
         ref=db.getReference("Restaurants");
 
 
-        addButton = (Button) v.findViewById(R.id.addFragmentButton);
+        addButton = (Button) v.findViewById(R.id.addButtonNew);
         regresarButton = (Button) v.findViewById(R.id.button6);
+
+
+        intent = getActivity().getIntent();
+
+        if(intent.hasExtra("lat") && intent.hasExtra("lon")){
+            placeLat = intent.getDoubleExtra("lat", 0);
+            placeLon = intent.getDoubleExtra("lon", 0);
+        }
+
+        latitude.setText(placeLat+"");
+        longitude.setText(placeLon+"");
 
 
         addButton.setOnClickListener(new View.OnClickListener() {

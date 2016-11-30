@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,7 +35,7 @@ public class AddRestaurantActivity extends AppCompatActivity
             longitude,
             latitude;
 
-    private Button addButton,regresarButton;
+    private Button addButton;
 
     private FirebaseDatabase db;
     private DatabaseReference ref;
@@ -57,6 +58,10 @@ public class AddRestaurantActivity extends AppCompatActivity
         latitude = (EditText) findViewById(R.id.latitude);
         longitude = (EditText)findViewById(R.id.longitude) ;
 
+        addButton = (Button)findViewById(R.id.addButtonNew);
+        db= FirebaseDatabase.getInstance();
+        ref=db.getReference("Restaurants");
+
         intent = getIntent();
 
         if(intent.hasExtra("lat") && intent.hasExtra("lon")){
@@ -66,6 +71,21 @@ public class AddRestaurantActivity extends AppCompatActivity
 
         latitude.setText(placeLat+"");
         longitude.setText(placeLon+"");
+
+
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Restaurant restaurant= new Restaurant(restName.getText().toString(),restAddress.getText().toString()
+                        ,restType.getText().toString(),resTelephone.getText().toString()
+                        ,resReputation.getText().toString(),
+                        Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
+                ref.child(restName.getText().toString()).setValue(restaurant);
+                Toast.makeText(getApplicationContext(),"Restaurant Añadido",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -101,9 +121,7 @@ public class AddRestaurantActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_gallery) {
             /*
             Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -114,13 +132,7 @@ public class AddRestaurantActivity extends AppCompatActivity
             Intent intent = new Intent(this,MiMapa.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }else if (id == R.id.nav_share) {
 
         }
 
