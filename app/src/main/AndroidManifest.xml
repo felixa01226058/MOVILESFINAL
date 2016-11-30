@@ -60,6 +60,10 @@
         <activity
             android:name=".MiMapa"
             android:label="@string/title_activity_mi_mapa"></activity>
+
+        <activity
+            android:name=".AddRestaurantActivity"
+            android:label="Nuevo Restaurante"></activity>
     </application>
 
 </manifest>
