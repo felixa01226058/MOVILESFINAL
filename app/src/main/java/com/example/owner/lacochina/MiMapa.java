@@ -147,7 +147,8 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
                     mMap.addMarker(new MarkerOptions().position(newRestaurant).title(
                             arrayRestaurant.get(i).getRestaurantName()).snippet(
                                     arrayRestaurant.get(i).getRestaurantType()+
-                                            ", Rating: "+arrayRestaurant.get(i).getRestaurantReputation()
+                                            ", Rating: "+arrayRestaurant.get(i).getRestaurantReputation()+
+                                            ", Tel: "+arrayRestaurant.get(i).getRestaurantTelephone()
                     ));
                 }
 
@@ -284,7 +285,7 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
      * */
     private void displayLocation() {
 
-        mLastLocation = LocationServices.FusedLocationApi
+        mLastLocation =   LocationServices.FusedLocationApi
                 .getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
             double latitude = mLastLocation.getLatitude();
@@ -294,7 +295,7 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
 
         } else {
 
-            Toast.makeText(this, "(Couldn't get the location. Make sure location is enabled on the device)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "LOCATION", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -467,6 +468,10 @@ public class MiMapa extends FragmentActivity implements LocationListener, OnMapR
             TextView tvSnippet = ((TextView) myContentsView
                     .findViewById(R.id.snippet));
             tvSnippet.setText(vicinity);
+
+            Toast.makeText(getApplicationContext(),
+                    "Picaste un marker", Toast.LENGTH_LONG)
+                    .show();
 
             return myContentsView;
         }

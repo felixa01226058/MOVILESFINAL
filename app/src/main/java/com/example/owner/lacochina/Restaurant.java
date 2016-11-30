@@ -9,12 +9,12 @@ public class Restaurant {
     public String restaurantName,
                     restaurantAddress,
                     restaurantType,
-                    restaurantTelephone,
-                    restaurantReputation;
+                    restaurantTelephone;
 
-    public double latitude,longitude;
 
-    public Restaurant(String restaurantName, String restaurantAddress, String restaurantType, String restaurantTelephone, String restaurantReputation,
+    public double latitude,longitude,restaurantReputation;
+
+    public Restaurant(String restaurantName, String restaurantAddress, String restaurantType, String restaurantTelephone, Double restaurantReputation,
                       double longitude,double latitude) {
         this.restaurantName = restaurantName;
         this.restaurantAddress = restaurantAddress;
@@ -37,7 +37,7 @@ public class Restaurant {
         return restaurantAddress;
     }
 
-    public String getRestaurantReputation() {
+    public Double getRestaurantReputation() {
         return restaurantReputation;
     }
 
@@ -61,7 +61,7 @@ public class Restaurant {
         this.restaurantAddress = restaurantAddress;
     }
 
-    public void setRestaurantReputation(String restaurantReputation) {
+    public void setRestaurantReputation(Double restaurantReputation) {
         this.restaurantReputation = restaurantReputation;
     }
 

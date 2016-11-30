@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class ListRestFragment extends Fragment {
@@ -84,6 +88,28 @@ public class ListRestFragment extends Fragment {
                     arrayRestaurant.add(restaurant);
                 }
 
+                Restaurant temp;
+                Log.d("SIZE", Integer.toString(arrayRestaurant.size()));
+
+                for(int i=0; i < arrayRestaurant.size(); i++) {
+
+                    for (int j = 1; j < (arrayRestaurant.size() - i); j++) {
+                        Log.d("ENTRE","ENTRE");
+                        Log.d("J-1", Double.toString(arrayRestaurant.get(j - 1).getRestaurantReputation()));
+                        Log.d("J", Double.toString(arrayRestaurant.get(j).getRestaurantReputation()));
+                        if (arrayRestaurant.get(j - 1).getRestaurantReputation() < arrayRestaurant.get(j).getRestaurantReputation()) {
+
+                            //swap the elements!
+                            temp = arrayRestaurant.get(j - 1);
+                            arrayRestaurant.set(j - 1, arrayRestaurant.get(j));
+                            arrayRestaurant.set(j, temp);
+                        }
+                    }
+                }
+
+
+
+
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,6 +121,8 @@ public class ListRestFragment extends Fragment {
                         ft.commit();
                     }
                 });
+
+
 
 
                 MyAdapter adapter = new MyAdapter(arrayRestaurant,getActivity());

@@ -93,7 +93,7 @@ public class EditRestaurantFragment extends Fragment {
         addressEdit.setText(restaurant.getRestaurantAddress());
         typeEdit.setText(restaurant.getRestaurantType());
         telephoneEdit.setText(restaurant.getRestaurantTelephone());
-        reputationEdit.setText(restaurant.getRestaurantReputation());
+        reputationEdit.setText(String.valueOf(restaurant.getRestaurantReputation()));
         latitude.setText(String.valueOf(restaurant.getLatitude()));
         longitude.setText(String.valueOf(restaurant.getLongitude()));
 
@@ -108,7 +108,7 @@ public class EditRestaurantFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Restaurant res = new Restaurant(nameEdit.getText().toString(),addressEdit.getText().toString(),typeEdit.getText().toString(),telephoneEdit.getText().toString(),
-                        reputationEdit.getText().toString(),Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
+                        Double.parseDouble(reputationEdit.getText().toString()),Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
                 ref.child(restaurant.getRestaurantName()).setValue(res);
                 Toast.makeText(getActivity(),"Restaurant Editado",Toast.LENGTH_LONG).show();
 

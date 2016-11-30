@@ -72,18 +72,34 @@ public class AddRestaurantActivity extends AppCompatActivity
         latitude.setText(placeLat+"");
         longitude.setText(placeLon+"");
 
+        //validar que no ingresa restaurante nulo
+
+        if(restName.getText().toString()==null){
+
+            Toast.makeText(getApplicationContext(),"NO PUEDE TENER NOMBRE VACIO",Toast.LENGTH_LONG).show();
+
+        }
+
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(restName.getText().toString().trim().length()==0){
 
-                Restaurant restaurant= new Restaurant(restName.getText().toString(),restAddress.getText().toString()
-                        ,restType.getText().toString(),resTelephone.getText().toString()
-                        ,resReputation.getText().toString(),
-                        Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
-                ref.child(restName.getText().toString()).setValue(restaurant);
-                Toast.makeText(getApplicationContext(),"Restaurant Añadido",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"NO PUEDE TENER NOMBRE VACIO",Toast.LENGTH_LONG).show();
+
+                }else{
+                    Restaurant restaurant= new Restaurant(restName.getText().toString(),restAddress.getText().toString()
+                            ,restType.getText().toString(),resTelephone.getText().toString()
+                            ,Double.parseDouble(resReputation.getText().toString()),
+                            Double.parseDouble(longitude.getText().toString()),Double.parseDouble(latitude.getText().toString()));
+                    ref.child(restName.getText().toString()).setValue(restaurant);
+                    Toast.makeText(getApplicationContext(),"Restaurant Añadido",Toast.LENGTH_LONG).show();
+
+                }
+
+
             }
         });
     }

@@ -50,7 +50,7 @@ public class MyAdapter extends BaseAdapter {
 
         restName.setText(arrayRest.get(position).getRestaurantName());
         restType.setText(arrayRest.get(position).getRestaurantType());
-        restReputation.setText(arrayRest.get(position).getRestaurantReputation());
+        restReputation.setText(String.valueOf(arrayRest.get(position).getRestaurantReputation()));
 
         return convertView;
     }

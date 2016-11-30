@@ -92,7 +92,7 @@ public class RestaurantVisualization extends Fragment {
         address.setText(restaurant.getRestaurantAddress());
         type.setText(restaurant.getRestaurantType());
         telephone.setText(restaurant.getRestaurantTelephone());
-        reputation.setText(restaurant.getRestaurantReputation());
+        reputation.setText(String.valueOf(restaurant.getRestaurantReputation()));
 
         editButton = (Button) v.findViewById(R.id.button7);
         editButton2 = (Button) v.findViewById(R.id.button8);
